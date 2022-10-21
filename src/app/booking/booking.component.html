@@ -1,0 +1,77 @@
+<div class="comp">
+<h1>Anime Screen Number : <strong><i>{{Mid}}</i></strong> </h1>
+<div class="container" >
+  <div class="row">
+    <div class="col-6">
+
+  <!-- Movie Details Section -->
+      <div>
+        <div class="card">
+          <img class="card-img-top" [src]="data.data.images.jpg.image_url" alt="Movie  Poster">
+          <div class="card-body">
+            <h4 class="card-title">Anime Title: {{data.data.title}}</h4>
+            <p class="card-text"><strong>Anime Description</strong></p>
+            <p><i>{{data.data.synopsis}}</i></p>
+          </div>
+        </div>
+        </div>
+
+      </div>
+
+    <div class="col-6 f">
+      <div class="text-center">
+        <label id='title'> <strong> MOVIE SEAT RESERVATION</strong></label>
+        <h1>Available Tickets : <strong><i>{{tick.tick_avail}}</i></strong></h1>
+
+      </div>
+
+      <form [formGroup]="bookForm" class='form-inline selectionForm ele' (submit)="addData(bookForm)">
+        <div class="formGroup el">
+          <label for="name">Name:</label><br>
+          <input type="text" class="FormControl" formControlName="uname" id='name' placeholder="Username" required="required"/>
+        </div>
+        <div *ngIf="bookForm.controls['uname'].invalid && (bookForm.controls['uname'].dirty || bookForm.controls['uname'].touched)" class="alerter">
+          Please enter username
+        </div>
+
+        <div class="formGroup el">
+          <label for="date">Choose Date:</label>
+          <input type="date"  class="FormControl" formControlName="date"  required="required"/>
+        </div>
+        <div class="formGroup el">
+          <label for="name" >Select Show & Timing</label><br><br>
+          <select name="show" id="show" class="FormControl" formControlName="show" placeholder="select show">
+            <option value="morning">MorningShow (10:00)</option>
+            <option value="noon">NoonShow (13:00)</option>
+            <option value="first">FirstShow (18:00)</option>
+            <option value="second">SecondShow (20:00)</option>
+          </select>
+
+        </div>
+
+        <div class="formGroup el">
+
+          <label for="seats">Number Of Seats:</label><br>
+          <h4>Select Seats less then 8</h4>
+          <input type="number" id='seats' class="FormControl" formControlName="seats" placeholder="3" required="required"/>
+        </div>
+        <div class="formGroup el">
+          <label for="Mobile">Mobile:</label><br>
+          <input type="text" class="FormControl" formControlName="mobile" id='name' placeholder="1234567890" required="required"/>
+        </div>
+        <div *ngIf="bookForm.controls['mobile'].invalid && (bookForm.controls['mobile'].dirty || bookForm.controls['mobile'].touched)" class="alerter">
+          Enter 10 digit contact number
+        </div>
+
+        <div class="text-center">
+          <button type="submit"  class="btn btn-danger btn-lg submitBtn" id="submitSelection"  [disabled]="[(tick.tick_avail)]< bookForm.value.seats" (click)="reduceTicks(Mid, bookForm.value.seats)">Book  <span class="load loading"></span></button>
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+</div>

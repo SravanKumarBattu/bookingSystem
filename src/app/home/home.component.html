@@ -1,0 +1,26 @@
+<section class="cards">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 card" *ngFor="let d of Mdata" >
+      <div class="movie">
+      <img class="card-img-top" src={{d.images.jpg.image_url}} alt="Card image cap">
+      <div class="card-body">
+    <div class="card-title">{{d.title}}</div>
+        <div>
+          <strong >
+            <mat-icon aria-hidden="false" aria-label="grade icon" color="accent" fontIcon="grade"></mat-icon>
+            <mat-icon aria-hidden="false" aria-label="grade icon" color="accent" fontIcon="grade"></mat-icon>
+            <mat-icon aria-hidden="false" aria-label="grade icon" color="accent" fontIcon="grade"></mat-icon>
+          </strong>
+        </div>
+    <p class="card-text">Rank: {{d.rank}} <br><br>
+      Rating: {{d.rating}} <br> Score: {{d.score}}</p>
+
+    <a routerLink="/book" class="btn btn-lg btn-block btn-primary " (click)="setter(d.mal_id)">Book</a>
+  </div>
+  </div>
+  </div>
+</div>
+</div>
+
+</section>

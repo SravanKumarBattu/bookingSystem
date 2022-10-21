@@ -1,0 +1,51 @@
+
+<div class="bod">
+<h1 mat-dialog-title>Update Booking Details</h1>
+<form [formGroup]="userForm" class='form-inline selectionForm ele' >
+  <div class="formGroup el">
+    <label for="name">Name:</label><br>
+    <input type="text" class="FormControl" formControlName="uname" id='name' placeholder="Username" required="required"/>
+  </div>
+  <div *ngIf="userForm.controls['uname'].invalid && (userForm.controls['uname'].dirty || userForm.controls['uname'].touched)" class="alerter">
+    Please enter username
+  </div>
+  <br>
+  <div class="formGroup el">
+    <label for="date">Choose Date:</label>
+    <br><input type="date"  class="FormControl" formControlName="date"  required="required"/>
+  </div>
+  <br>
+  <div class="formGroup el">
+    <label for="name" >Select Show & Timing</label><br><br>
+    <select name="show" id="show" class="FormControl" formControlName="show" placeholder="select show">
+      <option value="morning">MorningShow (10:00)</option>
+      <option value="noon">NoonShow (13:00)</option>
+      <option value="first">FirstShow (18:00)</option>
+      <option value="second">SecondShow (20:00)</option>
+    </select>
+  </div>
+
+  <br>
+
+  <div class="formGroup el">
+
+    <label for="seats">Number Of Seats:</label><br>
+    <h4>Select Seats less then 8</h4>
+    <input type="number" id='seats' class="FormControl" formControlName="seats" placeholder="3" required="required"/>
+  </div>
+
+  <br>
+  <div class="formGroup el">
+    <label for="Mobile">Mobile:</label><br>
+    <input type="text" class="FormControl" formControlName="mobile" id='name' placeholder="1234567890" required="required"/>
+  </div>
+<br>
+
+<div mat-dialog-action [align] ="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button style = "margin-left: 8px;" mat-raised-button color="primary" (click) ="updateDetails()" >Update</button>
+
+</div>
+</form>
+
+</div>
